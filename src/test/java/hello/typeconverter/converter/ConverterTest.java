@@ -10,21 +10,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ConverterTest {
 
     @Test
-    void StringToInteger() {
+    void stringToInteger() {
         StringToIntegerConverter converter = new StringToIntegerConverter();
         Integer result = converter.convert("10");
         assertThat(result).isEqualTo(10);
     }
 
     @Test
-    void IntegerToString() {
+    void integerToString() {
         IntegerToStringConverter converter = new IntegerToStringConverter();
         String result = converter.convert(10);
         assertThat(result).isEqualTo("10");
     }
 
     @Test
-    void StringToIpPort실패() {
+    void stringToIpPort실패() {
         StringToIpPortConverter converter = new StringToIpPortConverter();
         org.junit.jupiter.api.Assertions.assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
             converter.convert("127.0.0.1");
@@ -33,7 +33,7 @@ public class ConverterTest {
     }
 
     @Test
-    void StringToIpPort성공() {
+    void stringToIpPort성공() {
         StringToIpPortConverter converter = new StringToIpPortConverter();
         IpPort result = converter.convert("127.0.0.1:8080");
         assertThat(result.getIp()).isEqualTo("127.0.0.1");
@@ -42,7 +42,7 @@ public class ConverterTest {
 
 
     @Test
-    void IpPortToString() {
+    void ipPortToString() {
         IpPortToStringConverter converter = new IpPortToStringConverter();
         IpPort ipPort = new IpPort("127.0.0.1", 8080);
         String result = converter.convert(ipPort);
